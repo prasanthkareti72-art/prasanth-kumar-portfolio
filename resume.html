@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prasanth Kumar Kareti — Portfolio & Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f5f0;
+  --bg2: #edeae2;
+  --bg3: #e2dfd6;
+  --ink: #1a1814;
+  --ink2: #4a4740;
+  --ink3: #8a8680;
+  --accent: #c8522a;
+  --accent2: #e8784a;
+  --accent-bg: rgba(200,82,42,0.08);
+  --accent-border: rgba(200,82,42,0.2);
+  --border: rgba(26,24,20,0.1);
+  --border2: rgba(26,24,20,0.18);
+  --card: #ffffff;
+  --font-display: 'Clash Display', 'Georgia', serif;
+  --font-body: 'Cabinet Grotesk', 'Helvetica Neue', sans-serif;
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(247,245,240,0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 20px;
+  letter-spacing: -0.04em; color: var(--ink);
+  text-decoration: none;
+}
+.nav-brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 0; }
+.nav-links a {
+  color: var(--ink2); text-decoration: none;
+  font-size: 13px; font-weight: 500;
+  padding: 8px 16px; border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  letter-spacing: 0.01em;
+}
+.nav-links a:hover { color: var(--ink); background: var(--bg2); }
+.nav-resume-btn {
+  background: var(--accent); color: #fff;
+  padding: 9px 22px; border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+  text-decoration: none; letter-spacing: 0.01em;
+  transition: background 0.2s;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-resume-btn:hover { background: #b84420; }
+
+/* ── HERO ── */
+.hero {
+  padding: 80px 48px 64px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 64px; align-items: center;
+  max-width: 1100px; margin: 0 auto;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent-bg); border: 1px solid var(--accent-border);
+  color: var(--accent); border-radius: 100px;
+  padding: 5px 14px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 5.5vw, 68px);
+  font-weight: 700; line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+h1 em { font-style: normal; color: var(--accent); }
+
+.hero-tagline {
+  font-size: 17px; color: var(--ink2);
+  line-height: 1.75; max-width: 480px;
+  margin-bottom: 36px; font-weight: 400;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-fill {
+  background: var(--ink); color: var(--bg);
+  padding: 13px 26px; border-radius: 8px;
+  text-decoration: none; font-size: 14px; font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-fill:hover { background: var(--accent); transform: translateY(-2px); }
+.btn-outline {
+  background: transparent; color: var(--ink);
+  padding: 13px 26px; border-radius: 8px;
+  border: 1.5px solid var(--border2);
+  text-decoration: none; font-size: 14px; font-weight: 500;
+  transition: border-color 0.2s, transform 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* Hero card */
+.hero-card {
+  background: var(--card); border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 32px; text-align: center;
+  box-shadow: 0 2px 40px rgba(26,24,20,0.06);
+}
+.avatar-ring {
+  width: 96px; height: 96px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 700; color: #fff;
+  letter-spacing: -0.02em;
+}
+.card-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.card-role { font-size: 13px; color: var(--ink3); margin-bottom: 20px; }
+.card-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 20px; }
+.chip {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 100px; padding: 4px 12px;
+  font-size: 12px; font-weight: 500; color: var(--ink2);
+}
+.chip.accent { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); }
+.card-links { display: flex; gap: 8px; justify-content: center; }
+.card-link {
+  flex: 1; padding: 9px; border-radius: 8px; text-align: center;
+  font-size: 12px; font-weight: 600; text-decoration: none;
+  background: var(--bg2); color: var(--ink2); border: 1px solid var(--border);
+  transition: background 0.15s, color 0.15s;
+}
+.card-link:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ── SHARED SECTION ── */
+.section-wrap { max-width: 1100px; margin: 0 auto; padding: 72px 48px; }
+.section-hd { display: flex; align-items: baseline; gap: 16px; margin-bottom: 40px; }
+.section-no {
+  font-family: var(--font-display); font-size: 13px; font-weight: 600;
+  color: var(--accent); letter-spacing: 0.1em;
+}
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 700; letter-spacing: -0.035em;
+  color: var(--ink); line-height: 1.1;
+}
+.section-line { flex: 1; height: 1px; background: var(--border); margin-left: 16px; }
+
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+/* ── SKILLS ── */
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.skill-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 22px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.skill-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(200,82,42,0.08);
+}
+.skill-emoji { font-size: 26px; margin-bottom: 10px; display: block; }
+.skill-name { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 5px; }
+.skill-note { font-size: 12px; color: var(--ink3); line-height: 1.5; }
+.skill-level { margin-top: 14px; height: 3px; background: var(--bg3); border-radius: 100px; overflow: hidden; }
+.skill-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 100px; }
+
+/* ── PROJECTS ── */
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.project-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 28px;
+  display: flex; flex-direction: column;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.project-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(200,82,42,0.07);
+}
+.project-card.featured { grid-column: 1 / -1; flex-direction: row; gap: 32px; align-items: flex-start; }
+.project-badge {
+  font-size: 11px; font-weight: 700; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;
+}
+.project-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+.project-desc { font-size: 13px; color: var(--ink2); line-height: 1.7; flex: 1; }
+.tech-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+.tech {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 4px; padding: 3px 10px;
+  font-size: 11px; font-weight: 600; color: var(--ink2);
+}
+.tech.highlight { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); }
+.project-footer { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; gap: 12px; }
+.proj-link {
+  font-size: 12px; font-weight: 600; color: var(--ink2);
+  text-decoration: none; display: flex; align-items: center; gap: 4px;
+  transition: color 0.15s;
+}
+.proj-link:hover { color: var(--accent); }
+
+/* ── RESUME ── */
+.resume-outer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.resume-wrap { max-width: 1100px; margin: 0 auto; padding: 72px 48px; }
+.resume-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+.resume-download-btn {
+  background: var(--accent); color: #fff;
+  padding: 11px 24px; border-radius: 8px;
+  font-size: 13px; font-weight: 600; text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+  transition: background 0.2s;
+}
+.resume-download-btn:hover { background: #b84420; }
+
+.resume-doc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 48px rgba(26,24,20,0.08);
+}
+
+/* Resume Header */
+.res-header {
+  background: var(--ink);
+  padding: 40px 48px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.res-name {
+  font-family: var(--font-display);
+  font-size: 36px; font-weight: 700;
+  color: var(--bg); letter-spacing: -0.03em; margin-bottom: 6px;
+}
+.res-title { font-size: 14px; color: rgba(247,245,240,0.6); font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; }
+.res-contacts { display: flex; flex-direction: column; gap: 8px; text-align: right; }
+.res-contact { font-size: 13px; color: rgba(247,245,240,0.75); text-decoration: none; }
+.res-contact:hover { color: var(--accent2); }
+
+/* Resume Body */
+.res-body { display: grid; grid-template-columns: 1fr 260px; }
+.res-main { padding: 36px 40px; border-right: 1px solid var(--border); }
+.res-side { padding: 36px 32px; background: #faf9f6; }
+
+.res-section { margin-bottom: 32px; }
+.res-section:last-child { margin-bottom: 0; }
+.res-sec-title {
+  font-family: var(--font-display);
+  font-size: 11px; font-weight: 700;
+  color: var(--accent); letter-spacing: 0.14em;
+  text-transform: uppercase; margin-bottom: 16px;
+  padding-bottom: 8px; border-bottom: 1.5px solid var(--accent);
+  display: inline-block;
+}
+
+/* Objective */
+.res-objective { font-size: 14px; color: var(--ink2); line-height: 1.75; }
+
+/* Experience / Project items */
+.res-item { margin-bottom: 22px; }
+.res-item:last-child { margin-bottom: 0; }
+.res-item-hd { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px; }
+.res-item-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+.res-item-date { font-size: 11px; color: var(--ink3); font-weight: 500; white-space: nowrap; padding-top: 2px; }
+.res-item-sub { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 6px; }
+.res-item ul { padding-left: 16px; }
+.res-item li { font-size: 13px; color: var(--ink2); line-height: 1.65; margin-bottom: 3px; }
+
+/* Sidebar sections */
+.res-side .res-sec-title { font-size: 10px; }
+
+.skill-pill-list { display: flex; flex-direction: column; gap: 10px; }
+.skill-pill-item { }
+.skill-pill-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+.skill-pill-bar { height: 3px; background: var(--bg3); border-radius: 100px; overflow: hidden; }
+.skill-pill-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 100px; }
+
+.side-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.side-list li { font-size: 13px; color: var(--ink2); padding-left: 14px; position: relative; }
+.side-list li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 3px; }
+
+.edu-block { margin-bottom: 16px; }
+.edu-deg { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 2px; }
+.edu-school { font-size: 12px; color: var(--ink3); margin-bottom: 1px; }
+.edu-yr { font-size: 11px; color: var(--accent); font-weight: 500; }
+
+/* ── CONTACT ── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.contact-left p { font-size: 16px; color: var(--ink2); line-height: 1.8; margin-bottom: 28px; }
+.contact-items { display: flex; flex-direction: column; gap: 12px; }
+.contact-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px; border-radius: var(--radius);
+  background: var(--card); border: 1px solid var(--border);
+  text-decoration: none; color: var(--ink);
+  transition: border-color 0.2s, transform 0.15s;
+}
+.contact-row:hover { border-color: var(--accent-border); transform: translateX(4px); }
+.contact-row-icon { font-size: 18px; flex-shrink: 0; }
+.contact-row-label { font-size: 11px; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.07em; }
+.contact-row-val { font-size: 13px; font-weight: 600; margin-top: 1px; }
+.contact-form { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+.form-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+.form-group { margin-bottom: 16px; }
+.form-label { font-size: 11px; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.07em; display: block; margin-bottom: 6px; }
+.form-input {
+  width: 100%; padding: 10px 14px;
+  border: 1.5px solid var(--border2); border-radius: 8px;
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 14px;
+  outline: none; transition: border-color 0.2s;
+}
+.form-input:focus { border-color: var(--accent); }
+textarea.form-input { min-height: 100px; resize: vertical; }
+.form-submit {
+  width: 100%; padding: 13px;
+  background: var(--accent); color: #fff; border: none;
+  border-radius: 8px; font-family: var(--font-body);
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  transition: background 0.2s; letter-spacing: 0.01em;
+}
+.form-submit:hover { background: #b84420; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); color: rgba(247,245,240,0.6);
+  padding: 36px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-brand { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--bg); }
+.footer-brand span { color: var(--accent2); }
+.footer-copy { font-size: 12px; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate { animation: fadeUp 0.65s ease both; }
+.d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.15s; }
+.d3 { animation-delay: 0.25s; } .d4 { animation-delay: 0.4s; }
+
+@media (max-width: 800px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 48px 20px; }
+  .hero-card { display: none; }
+  .section-wrap, .resume-wrap { padding: 48px 20px; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card.featured { flex-direction: column; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .res-header { flex-direction: column; gap: 16px; }
+  .res-contacts { text-align: left; }
+  .res-body { grid-template-columns: 1fr; }
+  .res-main { border-right: none; border-bottom: 1px solid var(--border); }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">PK<span>.</span></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#resume" class="nav-resume-btn">
+    ↓ View Resume
+  </a>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1100px;margin:0 auto;">
+  <section class="hero" id="about">
+    <div class="hero-left">
+      <div class="hero-eyebrow animate d1">Available for Internships</div>
+      <h1 class="animate d2">
+        Prasanth<br>Kumar<br>
+        <em>Kareti.</em>
+      </h1>
+      <p class="hero-tagline animate d3">
+        Computer Science student at MLRIT, Hyderabad — passionate about Artificial Intelligence, software development, and building things that matter.
+      </p>
+      <div class="hero-actions animate d4">
+        <a href="#resume" class="btn-fill">View Resume ↓</a>
+        <a href="#projects" class="btn-outline">See Projects →</a>
+      </div>
+    </div>
+    <div class="animate d3">
+      <div class="hero-card">
+        <div class="avatar-ring">PK</div>
+        <div class="card-name">Prasanth Kumar</div>
+        <div class="card-role">B.Tech CS · MLRIT · 2024–2028</div>
+        <div class="card-chips">
+          <span class="chip accent">AI Enthusiast</span>
+          <span class="chip">Java</span>
+          <span class="chip">Python</span>
+          <span class="chip">C</span>
+          <span class="chip">Hyderabad</span>
+        </div>
+        <div class="card-links">
+          <a href="mailto:prasanthkareti72@gmail.com" class="card-link">✉ Email</a>
+          <a href="https://www.linkedin.com/in/kareti-prasanth-kumar-455910301/" target="_blank" class="card-link">in LinkedIn</a>
+          <a href="#resume" class="card-link">↓ Resume</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <div class="section-hd">
+      <span class="section-no">01</span>
+      <h2>Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <span class="skill-emoji">☕</span>
+        <div class="skill-name">Java</div>
+        <div class="skill-note">OOP, data structures, core Java fundamentals and application design.</div>
+        <div class="skill-level"><div class="skill-fill" style="width:82%"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-emoji">🐍</span>
+        <div class="skill-name">Python</div>
+        <div class="skill-note">Scripting, automation, and exploring AI/ML libraries and pipelines.</div>
+        <div class="skill-level"><div class="skill-fill" style="width:76%"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-emoji">⚙️</span>
+        <div class="skill-name">C Programming</div>
+        <div class="skill-note">Systems programming, memory management, and algorithmic logic.</div>
+        <div class="skill-level"><div class="skill-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-emoji">🤖</span>
+        <div class="skill-name">Artificial Intelligence</div>
+        <div class="skill-note">Learning ML fundamentals, algorithms, and intelligent system design.</div>
+        <div class="skill-level"><div class="skill-fill" style="width:55%"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-emoji">🌐</span>
+        <div class="skill-name">Web Development</div>
+        <div class="skill-note">HTML, CSS — building responsive personal portfolio websites.</div>
+        <div class="skill-level"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-emoji">🛠️</span>
+        <div class="skill-name">Backend Development</div>
+        <div class="skill-note">REST APIs, server-side logic, database integration with Node.js / Express and SQL.</div>
+        <div class="skill-level"><div class="skill-fill" style="width:60%"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-emoji">🧩</span>
+        <div class="skill-name">Problem Solving</div>
+        <div class="skill-note">Analytical thinking, DSA practice, and collaborative team projects.</div>
+        <div class="skill-level"><div class="skill-fill" style="width:78%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-hd">
+      <span class="section-no">02</span>
+      <h2>Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+      <!-- Featured -->
+      <div class="project-card featured">
+        <div style="flex:1">
+          <div class="project-badge">★ Featured Project</div>
+          <div class="project-title">Personal Portfolio Website</div>
+          <div class="project-desc">
+            Designed and built a fully responsive personal portfolio website from scratch using HTML and CSS. Features dedicated sections for skills, projects, and contact — with a clean, professional design that works across all devices.
+          </div>
+          <div class="tech-row">
+            <span class="tech highlight">HTML5</span>
+            <span class="tech highlight">CSS3</span>
+            <span class="tech">Responsive Design</span>
+            <span class="tech">UI/UX</span>
+          </div>
+          <div class="project-footer">
+            <a href="#" class="proj-link">⟶ Live Demo</a>
+            <a href="#" class="proj-link">⌥ Source Code</a>
+          </div>
+        </div>
+        <div style="flex:0 0 200px; background:var(--bg2); border-radius:12px; display:flex; align-items:center; justify-content:center; min-height:160px;">
+          <div style="text-align:center; color:var(--ink3);">
+            <div style="font-size:48px; margin-bottom:8px;">🌐</div>
+            <div style="font-size:12px; font-weight:600; letter-spacing:0.04em;">WEB PROJECT</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-badge">Python · AI</div>
+        <div class="project-title">AI Chatbot Assistant</div>
+        <div class="project-desc">A conversational chatbot built with Python, using NLP techniques to understand user intent and return context-aware responses.</div>
+        <div class="tech-row">
+          <span class="tech highlight">Python</span>
+          <span class="tech">NLP</span>
+          <span class="tech">AI</span>
+        </div>
+        <div class="project-footer">
+          <a href="#" class="proj-link">⟶ View Project</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-badge">Java · OOP</div>
+        <div class="project-title">Student Management System</div>
+        <div class="project-desc">Java-based desktop application to manage student records, grades, and attendance using OOP principles and file I/O operations.</div>
+        <div class="tech-row">
+          <span class="tech highlight">Java</span>
+          <span class="tech">OOP</span>
+          <span class="tech">File I/O</span>
+        </div>
+        <div class="project-footer">
+          <a href="#" class="proj-link">⟶ View Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- RESUME -->
+<section id="resume" class="resume-outer">
+  <div class="resume-wrap">
+    <div class="resume-top">
+      <div>
+        <div class="section-hd" style="margin-bottom:8px">
+          <span class="section-no">03</span>
+          <h2>Resume</h2>
+          <div class="section-line"></div>
+        </div>
+        <p style="font-size:14px;color:var(--ink3);margin-top:4px;">Full resume — printable and downloadable</p>
+      </div>
+      <button onclick="window.print()" class="resume-download-btn">
+        ⬇ Print / Save PDF
+      </button>
+    </div>
+
+    <div class="resume-doc">
+      <!-- Resume Header -->
+      <div class="res-header">
+        <div>
+          <div class="res-name">Prasanth Kumar Kareti</div>
+          <div class="res-title">Computer Science Student · AI, Software & Backend Development</div>
+        </div>
+        <div class="res-contacts">
+          <a href="mailto:prasanthkareti72@gmail.com" class="res-contact">prasanthkareti72@gmail.com</a>
+          <a href="https://www.linkedin.com/in/kareti-prasanth-kumar-455910301/" class="res-contact">linkedin.com/in/kareti-prasanth-kumar</a>
+          <span class="res-contact">Greater Hyderabad, India</span>
+        </div>
+      </div>
+
+      <!-- Resume Body -->
+      <div class="res-body">
+        <!-- Main Column -->
+        <div class="res-main">
+
+          <!-- Objective -->
+          <div class="res-section">
+            <div class="res-sec-title">Objective</div>
+            <p class="res-objective">
+              Passionate Computer Science student with a strong interest in Artificial Intelligence, Backend Development, and emerging technologies. Skilled in Java, Python, C, and backend technologies including REST APIs, Node.js, and SQL, with a keen enthusiasm for learning and building innovative solutions. A quick learner and team player who is always eager to improve technical skills, explore new ideas, and grow professionally in the tech industry.
+            </p>
+          </div>
+
+          <!-- Projects -->
+          <div class="res-section">
+            <div class="res-sec-title">Projects</div>
+
+            <div class="res-item">
+              <div class="res-item-hd">
+                <div class="res-item-title">Personal Portfolio Website</div>
+                <div class="res-item-date">2025</div>
+              </div>
+              <div class="res-item-sub">HTML · CSS · Responsive Design</div>
+              <ul>
+                <li>Created a personal portfolio webpage using HTML and CSS from scratch.</li>
+                <li>Designed responsive sections for Skills, Projects, and Contact information.</li>
+                <li>Implemented clean UI with cross-device compatibility and professional layout.</li>
+              </ul>
+            </div>
+
+            <div class="res-item">
+              <div class="res-item-hd">
+                <div class="res-item-title">AI Chatbot Assistant</div>
+                <div class="res-item-date">2025</div>
+              </div>
+              <div class="res-item-sub">Python · NLP · Artificial Intelligence</div>
+              <ul>
+                <li>Built a conversational chatbot using Python and NLP techniques.</li>
+                <li>Implemented intent recognition for context-aware responses.</li>
+              </ul>
+            </div>
+
+            <div class="res-item">
+              <div class="res-item-hd">
+                <div class="res-item-title">Student Management System</div>
+                <div class="res-item-date">2025</div>
+              </div>
+              <div class="res-item-sub">Java · Object-Oriented Programming</div>
+              <ul>
+                <li>Developed a Java application to manage student records and grades.</li>
+                <li>Applied core OOP principles including inheritance, encapsulation, and polymorphism.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Education (main) -->
+          <div class="res-section">
+            <div class="res-sec-title">Education</div>
+            <div class="res-item">
+              <div class="res-item-hd">
+                <div class="res-item-title">Bachelor of Technology — Computer Science</div>
+                <div class="res-item-date">Sep 2024 – Mar 2028</div>
+              </div>
+              <div class="res-item-sub">Marri Laxman Reddy Institute of Technology and Management, Hyderabad</div>
+              <ul>
+                <li>Focus areas: Artificial Intelligence, Software Development, Data Structures.</li>
+                <li>Actively participating in coding clubs and technical workshops.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <div class="res-side">
+
+          <!-- Technical Skills -->
+          <div class="res-section">
+            <div class="res-sec-title">Technical Skills</div>
+            <div class="skill-pill-list">
+              <div class="skill-pill-item">
+                <div class="skill-pill-name">Java</div>
+                <div class="skill-pill-bar"><div class="skill-pill-fill" style="width:82%"></div></div>
+              </div>
+              <div class="skill-pill-item">
+                <div class="skill-pill-name">Python</div>
+                <div class="skill-pill-bar"><div class="skill-pill-fill" style="width:76%"></div></div>
+              </div>
+              <div class="skill-pill-item">
+                <div class="skill-pill-name">C Programming</div>
+                <div class="skill-pill-bar"><div class="skill-pill-fill" style="width:70%"></div></div>
+              </div>
+              <div class="skill-pill-item">
+                <div class="skill-pill-name">HTML / CSS</div>
+                <div class="skill-pill-bar"><div class="skill-pill-fill" style="width:65%"></div></div>
+              </div>
+              <div class="skill-pill-item">
+                <div class="skill-pill-name">AI / ML Concepts</div>
+                <div class="skill-pill-bar"><div class="skill-pill-fill" style="width:55%"></div></div>
+              </div>
+              <div class="skill-pill-item">
+                <div class="skill-pill-name">Backend Dev (Node.js)</div>
+                <div class="skill-pill-bar"><div class="skill-pill-fill" style="width:60%"></div></div>
+              </div>
+              <div class="skill-pill-item">
+                <div class="skill-pill-name">REST APIs / SQL</div>
+                <div class="skill-pill-bar"><div class="skill-pill-fill" style="width:58%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interests -->
+          <div class="res-section">
+            <div class="res-sec-title">Interests</div>
+            <ul class="side-list">
+              <li>Artificial Intelligence</li>
+              <li>Machine Learning</li>
+              <li>Software Engineering</li>
+              <li>Web Development</li>
+              <li>Open Source</li>
+              <li>Competitive Coding</li>
+            </ul>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="res-section">
+            <div class="res-sec-title">Soft Skills</div>
+            <ul class="side-list">
+              <li>Quick Learner</li>
+              <li>Team Collaboration</li>
+              <li>Problem Solving</li>
+              <li>Communication</li>
+              <li>Adaptability</li>
+            </ul>
+          </div>
+
+          <!-- Languages -->
+          <div class="res-section">
+            <div class="res-sec-title">Languages</div>
+            <ul class="side-list">
+              <li>Telugu (Native)</li>
+              <li>English (Proficient)</li>
+              <li>Hindi (Conversational)</li>
+            </ul>
+          </div>
+
+        </div>
+      </div><!-- /res-body -->
+    </div><!-- /resume-doc -->
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="section-hd">
+      <span class="section-no">04</span>
+      <h2>Get In Touch</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <p>
+          I'm always open to new opportunities, collaborations, and interesting conversations about tech. Whether it's an internship, project idea, or just a chat — reach out!
+        </p>
+        <div class="contact-items">
+          <a href="mailto:prasanthkareti72@gmail.com" class="contact-row">
+            <span class="contact-row-icon">✉</span>
+            <div>
+              <div class="contact-row-label">Email</div>
+              <div class="contact-row-val">prasanthkareti72@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/kareti-prasanth-kumar-455910301/" target="_blank" class="contact-row">
+            <span class="contact-row-icon">💼</span>
+            <div>
+              <div class="contact-row-label">LinkedIn</div>
+              <div class="contact-row-val">kareti-prasanth-kumar-455910301</div>
+            </div>
+          </a>
+          <div class="contact-row" style="cursor:default">
+            <span class="contact-row-icon">📍</span>
+            <div>
+              <div class="contact-row-label">Location</div>
+              <div class="contact-row-val">Greater Hyderabad, India</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-title">Send a Message</div>
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-input" placeholder="Hi Prasanth, I'd like to discuss..."></textarea>
+        </div>
+        <button class="form-submit">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">PK<span>.</span> Prasanth Kumar Kareti</div>
+  <div class="footer-copy">© 2025 · B.Tech CS @ MLRIT Hyderabad · Built with HTML & CSS 🚀</div>
+</footer>
+
+<style>
+@media print {
+  nav, .hero, #skills, #projects, #contact, footer, .resume-top { display: none !important; }
+  .resume-outer { border: none; background: white; }
+  .resume-wrap { padding: 0; }
+  .resume-doc { box-shadow: none; border: none; }
+}
+</style>
+
+</body>
+</html>
