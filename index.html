@@ -80,6 +80,8 @@
     display: flex;
     align-items: center;
     padding-top: 120px;
+    position: relative;
+    overflow: hidden;
   }
   .hero-inner { max-width: 760px; }
   .hero-badge {
@@ -373,6 +375,53 @@
     0%, 100% { opacity: 1; }
     50% { opacity: 0.4; }
   }
+  @keyframes floatOrb {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(1.08); }
+    66% { transform: translate(-20px, 20px) scale(0.95); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.35;
+    z-index: -1;
+    pointer-events: none;
+    animation: floatOrb 14s ease-in-out infinite;
+  }
+  .hero-orb.orb1 { width: 380px; height: 380px; background: var(--accent); top: -80px; right: 8%; }
+  .hero-orb.orb2 { width: 300px; height: 300px; background: var(--accent2); bottom: -60px; left: 4%; animation-delay: -6s; }
+
+  .typing-cursor {
+    display: inline-block;
+    width: 2px;
+    background: var(--accent);
+    margin-left: 3px;
+    animation: blink 0.9s step-end infinite;
+  }
+
+  .project-card { transform-style: preserve-3d; will-change: transform; }
+
+  .skills-grid .skill-card:nth-child(1) { transition-delay: 0.05s; }
+  .skills-grid .skill-card:nth-child(2) { transition-delay: 0.15s; }
+  .skills-grid .skill-card:nth-child(3) { transition-delay: 0.25s; }
+  .skills-grid .skill-card:nth-child(4) { transition-delay: 0.35s; }
+
+  .projects-grid .project-card:nth-child(1) { transition-delay: 0.05s; }
+  .projects-grid .project-card:nth-child(2) { transition-delay: 0.12s; }
+  .projects-grid .project-card:nth-child(3) { transition-delay: 0.19s; }
+  .projects-grid .project-card:nth-child(4) { transition-delay: 0.26s; }
+  .projects-grid .project-card:nth-child(5) { transition-delay: 0.33s; }
+  .projects-grid .project-card:nth-child(6) { transition-delay: 0.4s; }
 
   .fade-in {
     opacity: 0;
@@ -396,6 +445,7 @@
   <div class="nav-logo">PK.</div>
   <ul class="nav-links">
     <li><a href="#about">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -404,6 +454,8 @@
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-orb orb1"></div>
+  <div class="hero-orb orb2"></div>
   <div class="hero-inner">
     <div class="hero-badge">
       <span></span>
@@ -412,10 +464,10 @@
     <h1 class="hero-name">
       K. Prashanth<br><span class="highlight">Kumar</span>
     </h1>
-    <p class="hero-role">Full Stack Developer (Aspiring) · B.Tech CSE · 3rd Year</p>
+    <p class="hero-role"><span id="typedRole"></span><span class="typing-cursor">&nbsp;</span></p>
     <p class="hero-desc">
       Motivated computer science student from MLRITM, Hyderabad with a CGPA of 9.10.
-      Passionate about building real-world web applications using Python, JavaScript, and modern web technologies.
+      Passionate about building real-world AI, full-stack, and data-driven applications using Python, OpenCV, Flask, Django, and modern web technologies.
     </p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View My Projects</a>
@@ -423,15 +475,15 @@
     </div>
     <div class="hero-stats">
       <div>
-        <div class="stat-num">9.10</div>
+        <div class="stat-num" data-count="9.10">0</div>
         <div class="stat-label">CGPA Score</div>
       </div>
       <div>
-        <div class="stat-num">3+</div>
+        <div class="stat-num" data-count="6">0</div>
         <div class="stat-label">Projects Built</div>
       </div>
       <div>
-        <div class="stat-num">6+</div>
+        <div class="stat-num" data-count="12">0</div>
         <div class="stat-label">Technologies</div>
       </div>
     </div>
@@ -450,6 +502,7 @@
         <span class="tag">HTML5</span>
         <span class="tag">CSS3</span>
         <span class="tag">JavaScript</span>
+        <span class="tag">Bootstrap</span>
         <span class="tag">Responsive Design</span>
       </div>
     </div>
@@ -458,21 +511,58 @@
       <div class="skill-title">Backend & Database</div>
       <div class="skill-tags">
         <span class="tag purple">Python</span>
-        <span class="tag purple">Java</span>
+        <span class="tag purple">Flask</span>
+        <span class="tag purple">Django</span>
         <span class="tag purple">SQL</span>
         <span class="tag purple">MySQL</span>
-        <span class="tag purple">DBMS</span>
+        <span class="tag purple">SQLite</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-title">AI & Computer Vision</div>
+      <div class="skill-tags">
+        <span class="tag green">OpenCV</span>
+        <span class="tag green">MediaPipe</span>
+        <span class="tag green">Face Recognition</span>
+        <span class="tag green">PyAutoGUI</span>
       </div>
     </div>
     <div class="skill-card fade-in">
       <div class="skill-icon">🛠️</div>
       <div class="skill-title">Tools & Concepts</div>
       <div class="skill-tags">
-        <span class="tag green">GitHub</span>
-        <span class="tag green">Git</span>
-        <span class="tag green">VS Code</span>
-        <span class="tag green">OOP</span>
-        <span class="tag green">DSA</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">Git</span>
+        <span class="tag">VS Code</span>
+        <span class="tag">OOP</span>
+        <span class="tag">DSA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag">Where I've Worked</div>
+  <h2 class="section-title">Experience</h2>
+  <div class="edu-card fade-in">
+    <div class="edu-icon">🤖</div>
+    <div>
+      <div class="edu-degree">AI Intern — CodSoft</div>
+      <div class="edu-school">Developing real-time AI & computer vision applications using Python, OpenCV, and MediaPipe (AI Face Attendance System, AI Virtual Mouse).</div>
+      <div class="edu-meta">
+        <span class="edu-chip">June 2026 – Present</span>
+      </div>
+    </div>
+  </div>
+  <div class="edu-card fade-in">
+    <div class="edu-icon">💻</div>
+    <div>
+      <div class="edu-degree">Web Development Intern — IncuXAI</div>
+      <div class="edu-school">Building responsive, database-integrated full-stack web applications using Django, HTML, CSS, JavaScript, and Bootstrap.</div>
+      <div class="edu-meta">
+        <span class="edu-chip">May 2026 – Present</span>
       </div>
     </div>
   </div>
@@ -486,6 +576,62 @@
 
     <div class="project-card fade-in">
       <div class="project-num">PROJECT 01</div>
+      <div class="project-title">AI Face Attendance System</div>
+      <p class="project-desc">An AI-powered attendance system that automatically recognizes faces in real time and securely stores attendance records in a database through a user-friendly web interface.</p>
+      <div class="project-tech">
+        <span class="tag green">Python</span>
+        <span class="tag green">OpenCV</span>
+        <span class="tag">Flask</span>
+        <span class="tag purple">SQLite</span>
+        <span class="tag">HTML/CSS/JS</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/prasanthkareti72-art" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-num">PROJECT 02</div>
+      <div class="project-title">Water Scarcity Knowledge Sharing Platform</div>
+      <p class="project-desc">A full-stack web platform promoting water conservation awareness through educational content, interactive resources, and a responsive UI — part of a broader IoT & AI water management system built with a 4-member team.</p>
+      <div class="project-tech">
+        <span class="tag">Django</span>
+        <span class="tag green">Python</span>
+        <span class="tag">HTML/CSS/JS</span>
+        <span class="tag">Bootstrap</span>
+        <span class="tag purple">SQLite</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/prasanthkareti72-art" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-num">PROJECT 03</div>
+      <div class="project-title">AI Virtual Mouse</div>
+      <p class="project-desc">A real-time virtual mouse that enables cursor control and click actions using hand gestures captured through a webcam, eliminating the need for a physical mouse.</p>
+      <div class="project-tech">
+        <span class="tag green">Python</span>
+        <span class="tag green">OpenCV</span>
+        <span class="tag green">MediaPipe</span>
+        <span class="tag">PyAutoGUI</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/prasanthkareti72-art" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-num">PROJECT 04</div>
       <div class="project-title">SmartAttend – Attendance Tracking System</div>
       <p class="project-desc">A web-based student attendance management system for teachers to mark, track, and analyze attendance in real time with automated low-attendance alerts and monthly reports.</p>
       <div class="project-tech">
@@ -504,7 +650,7 @@
     </div>
 
     <div class="project-card fade-in">
-      <div class="project-num">PROJECT 02</div>
+      <div class="project-num">PROJECT 05</div>
       <div class="project-title">EduSolve – NCERT Doubt Solver</div>
       <p class="project-desc">A full-stack web application helping students instantly solve NCERT textbook doubts using keyword-based search and subject filtering. Supports Class 6–12 across all major subjects.</p>
       <div class="project-tech">
@@ -523,7 +669,7 @@
     </div>
 
     <div class="project-card fade-in">
-      <div class="project-num">PROJECT 03</div>
+      <div class="project-num">PROJECT 06</div>
       <div class="project-title">Voice Command Assistant</div>
       <p class="project-desc">An intelligent voice-controlled assistant application that listens to spoken commands and performs automated tasks — showcasing integration of speech recognition with Python scripting.</p>
       <div class="project-tech">
@@ -612,6 +758,78 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Typing effect for hero role
+  const roles = [
+    'AI/ML Engineer (Aspiring)',
+    'Full Stack Developer',
+    'Data Analyst',
+    'B.Tech CSE · 3rd Year'
+  ];
+  const typedEl = document.getElementById('typedRole');
+  let roleIdx = 0, charIdx = 0, deleting = false;
+
+  function typeLoop() {
+    const current = roles[roleIdx];
+    if (!deleting) {
+      charIdx++;
+      typedEl.textContent = current.slice(0, charIdx);
+      if (charIdx === current.length) {
+        deleting = true;
+        setTimeout(typeLoop, 1400);
+        return;
+      }
+    } else {
+      charIdx--;
+      typedEl.textContent = current.slice(0, charIdx);
+      if (charIdx === 0) {
+        deleting = false;
+        roleIdx = (roleIdx + 1) % roles.length;
+      }
+    }
+    setTimeout(typeLoop, deleting ? 35 : 55);
+  }
+  typeLoop();
+
+  // Animated count-up for stats
+  function animateCount(el) {
+    const target = parseFloat(el.dataset.count);
+    const isDecimal = el.dataset.count.includes('.');
+    const duration = 1400;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = target * eased;
+      el.textContent = isDecimal ? value.toFixed(2) : Math.round(value) + '+';
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = isDecimal ? target.toFixed(2) : target + '+';
+    }
+    requestAnimationFrame(step);
+  }
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.stat-num').forEach(animateCount);
+        statObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const statsBlock = document.querySelector('.hero-stats');
+  if (statsBlock) statObserver.observe(statsBlock);
+
+  // Subtle 3D tilt on project cards
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(800px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-6px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
 </script>
 </body>
 </html>
